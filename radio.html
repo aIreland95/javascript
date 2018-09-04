@@ -6,9 +6,10 @@
   </head>
   <body>
     <form method="get" action="">
-      <input type="radio" name="switch" value="on"> On <br />
-      <input type="radio" name="switch" value="off"> Off <br />
-      <input type="submit" name="submit" value="run">
+      <input type="radio" name="switch" value="on" onclick=document.getElementId('light').src='Images/pic_bulbon.gif'> On <br />
+      <input type="radio" name="switch" value="off" checked="checked" onclick=document.getElementId('light').src='Images/pic_bulboff.gif'> Off <br />
+    <!--  <input type="submit" name="submit" value="Run"> <br /> -->
     </form>
+    <img id="light" src="Images/pic_bulboff.gif">
   </body>
 </html>
