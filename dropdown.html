@@ -6,20 +6,21 @@
   </head>
   <body>
     <form action="" method="get">
-      <select>
-        <option value="Blue" onclick="blueColor()">Blue</option>
-        <option value="Purple" onclick="purpleColor()">Purple</option>
-        <option value="Orange" onclick="orangeColor()">Orange</option>
-        <option value="Red" onclick="redColor()">Red</option>
+      <select id="colorDrop" onchange="changeColor()">
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+        <option value="Orange">Orange</option>
+        <option value="Red">Red</option>
       </select>
     </form>
   </body>
   <script>
-  function blueColor() {
-    document.body.style.backgroundColor = "blue";
+  function changeColor() {
+    let color = document.getElementById('colorDrop').value;
+    document.body.style.background = color;
   }
 
-  function purpleColor() {
+  /* function purpleColor() {
     document.body.style.backgroundColor = "purple";
   }
 
@@ -29,6 +30,6 @@
 
   function redColor() {
     document.body.style.backgroundColor = "red";
-  }
+  } */
   </script>
 </html>
