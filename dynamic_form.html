@@ -18,7 +18,7 @@
 function hideInputs() {
   document.getElementById("lastname").style.display = "none";
   document.getElementById("lastnameLabel").style.display = "none";
-  let city = document.getElementByClassName("city");
+  let city = document.getElementsByClassName("city");
   for (let i = 0; i < city.length; i++) {
     city[i].style.display = "none";
   }
