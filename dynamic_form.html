@@ -8,13 +8,14 @@
     <form action="" method="post">
       First Name: <input type="text" name="firstname" id="firstname">
       <br />
-      Last Name: <input type="text" name="lastname" id="lastname">
+      <label id="lastnameLabel">Last Name: <input type="text" name="lastname" id="lastname">
     </form>
   </body>
 
 <script>
 function hideInputs() {
   document.getElementById("lastname").style.display = "none";
+  document.getElementById("lastnameLabel").style.display = "none";
 }
 </script>
 
