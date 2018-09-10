@@ -6,7 +6,7 @@
   </head>
   <body onload="hideInputs()">
     <form action="" method="post">
-      First Name: <input type="text" name="firstname" id="firstname">
+      First Name: <input onkeydown="unhideInputs()" type="text" name="firstname" id="firstname">
       <br />
       <label id="lastnameLabel">Last Name:</label> <input type="text" name="lastname" id="lastname">
       <br />
@@ -21,6 +21,15 @@ function hideInputs() {
   let city = document.getElementsByClassName("city");
   for (let i = 0; i < city.length; i++) {
     city[i].style.display = "none";
+  }
+}
+
+function unhideInputs() {
+  document.getElementById("lastname").style.display = "inline";
+  document.getElementById("lastnameLabel").style.display = "inline";
+  let city = document.getElementsByClassName("city");
+  for (let i = 0; i < city.length; i++) {
+    city[i].style.display = "inline";
   }
 }
 </script>
