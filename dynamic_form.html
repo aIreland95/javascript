@@ -9,6 +9,8 @@
       First Name: <input type="text" name="firstname" id="firstname">
       <br />
       <label id="lastnameLabel">Last Name: <input type="text" name="lastname" id="lastname">
+      <br />
+      <label class="city">City: <input type="text" name="city" class="city">
     </form>
   </body>
 
@@ -16,6 +18,7 @@
 function hideInputs() {
   document.getElementById("lastname").style.display = "none";
   document.getElementById("lastnameLabel").style.display = "none";
+  document.getElementByClassName("city").style.display = "none";
 }
 </script>
 
