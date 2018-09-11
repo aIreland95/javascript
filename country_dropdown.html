@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body onload="hideBoxes()">
+    <form action="" method="post">
+
+<div id="country">
+      <label>Country: </label>
+      <select onchange="showState()">
+        <option value="USA">United States</option>
+        <option value="UK">Ukraine</option>
+      </select>
+    </div>
+
+<br />
+
+<div id="state">
+      <label id="stateLabel">State:</label><input onkeyup="showCity()" type="text">
+</div>
+
+<br />
+
+<div id="usaCity">
+      <label>City: </label>
+      <select>
+        <option value="statecollege">State College</option>
+        <option value="lewistown">Lewistown</option>
+      </select>
+    </div>
+
+    <br />
+
+<div id="province">
+      <label>Province: </label>
+      <select onchange="showCity()">
+        <option value="lviv">Lviv</option>
+      </select>
+</div>
+
+    <br />
+
+<div id="ukraineCity">
+      <label>City: </label>
+      <select>
+        <option value="lviv">Lviv</option>
+      </select>
+    </div>
+
+    </form>
+  </body>
+
+<script>
+
+function hideBoxes() {
+  document.getElementById("usaCity").style.display = "none";
+  document.getElementById("province").style.display = "none";
+  document.getElementById("ukraineCity").style.display = "none";
+  document.getElementById("state").style.display = "none";
+}
+
+function showState() {
+
+  let cnty = document.getElementById("country").value;
+
+  if (cnty.value == "USA")
+    document.getElementById("stateLabel").style.display = "block";
+    document.getElementById("state").style.display = "block";
+
+  else if (cnty.value == "UK")
+    document.getElementById("province").style.display = "block";
+}
+
+function showCity() {
+  let pa = document.getElementById("state").value;
+  let uk = document.getElementById("province").value;
+
+  if (pa.value == "PA")
+    document.getElementById("usaCity").style.display = "block";
+
+  if (uk.value == "lviv")
+    document.getElementById("ukraineCity").style.display = "block";
+}
+
+</script>
+
+</html>
