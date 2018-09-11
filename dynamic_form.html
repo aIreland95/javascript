@@ -10,7 +10,17 @@
       <br />
       <label id="lastnameLabel">Last Name:</label> <input type="text" name="lastname" id="lastname">
       <br />
-      <label class="city">City:</label> <input type="text" name="city" class="city">
+      <label class="city">City:</label> <input onkeypress="showState" type="text" name="city" class="city">
+
+      <div id="state">
+        <label>State: </label>
+        <select name="state">
+          <option value="PA">Pennsylvania</option>
+          <option value="NY">New York</option>
+          <option value="NJ">New Jersey</option>
+        </select>
+      </div>
+
     </form>
   </body>
 
@@ -22,6 +32,11 @@ function hideInputs() {
   for (let i = 0; i < city.length; i++) {
     city[i].style.display = "none";
   }
+  document.getElementById("state").style.display = "none";
+}
+
+function showState() {
+  document.getElementById("state").style.display = "block";
 }
 
 function unhideInputs() {
