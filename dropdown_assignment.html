@@ -1,0 +1,86 @@
+<!-- Aaron Ireland
+dropdown assignment
+September 11, 2018 -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body onload="hideOptions()">
+    <form action="" method="post">
+
+    <label>Country: </label> <!-- dropdown for country, uses showState() function when changed -->
+    <select id="country" onchange="showState()">
+      <option value="United States">United States</option>
+      <option value="Ukraine">Ukraine</option>
+    </select>
+
+    <input id="state" type="text" placeholder="State" onkeyup="city1()"> <!--textbox for state abbreviation, shows PA cities when PA is typed-->
+
+    <select id="province" onchange="city2()"> <!-- dropdown for Ukraine provinces, shows cities of Lviv when Lviv selected -->
+      <option value="Rivne">Rivne</option>
+      <option value="Lviv">Lviv</option>
+    </select>
+
+  <select id="usaCity"> <!-- dropdown for PA cities -->
+    <option value="State College">State College</option>
+    <option value="Lewistown">Lewistown</option>
+  </select>
+
+  <select id="ukraineCity"> <!--dropdown for Lviv cities -->
+    <option value="Lviv">Lviv</option>
+    <option value="Belz">Belz</option>
+  </select>
+
+    </form>
+  </body>
+
+<script>
+
+// function that hides all dropdowns except for country
+function hideOptions() {
+  document.getElementById("state").style.display = "none";
+  document.getElementById("usaCity").style.display = "none";
+  document.getElementById("province").style.display = "none";
+  document.getElementById("ukraineCity").style.display = "none";
+}
+
+// function that displays either State textbox or Province dropdown based on selection
+function showState() {
+  let country = document.getElementById("country").value;
+
+  if (country == "United States"){ // shows State textbox, hides Ukraine related items
+    document.getElementById("state").style.display = "block";
+    document.getElementById("province").style.display = "none";
+    document.getElementById("ukraineCity").style.display = "none";
+  }
+  else if (country == "Ukraine") { // shows province dropdown, hides USA related items
+    document.getElementById("province").style.display = "block";
+    document.getElementById("state").style.display = "none";
+    document.getElementById("usaCity").style.display = "none";
+  }
+}
+
+// function that displays city dropdown if PA is typed in textbox
+function city1() {
+  let state = document.getElementById("state").value;
+
+  if (state == "PA") {
+    document.getElementById("usaCity").style.display = "block";
+  }
+}
+
+// function that displays city dropdown if Lviv is selected from previous dropdown
+function city2() {
+  let province = document.getElementById("province").value;
+
+  if (province == "Lviv"){
+    document.getElementById("ukraineCity").style.display = "block";
+  }
+}
+
+</script>
+
+</html>
