@@ -15,8 +15,8 @@ if (peopleAmt <= 0 || isNaN(peopleAmt)) {
   alert("You must enter a number of people greater than zero.");
   return;
 }
-if (billAmt <= 0 || isNaN(billAmt)) {
-  alert("You must enter a positive bill amount as a number");
+if (billAmt < 0 || isNaN(billAmt)) {
+  confirm("You must enter a positive bill amount as a number");
   return;
 }
 
