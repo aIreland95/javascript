@@ -10,9 +10,18 @@ function calculateTip() {
   let serviceQual = document.getElementById("serviceQual").value;
   let peopleAmt = document.getElementById("peopleamt").value;
 
+// Check for zero or null values
+if (peopleAmt <= 0) {
+  alert("You must enter a number of people, greater than zero");
+}
+
+
+
   // Calculate the total
   let total = (billAmt * serviceQual) / peopleAmt;
+  // total = Math.round(total); // Rounds the number
+
 
   document.getElementById("totalTip").style.display = "block";
-  document.getElementById("tip").innerHTML = total;
+  document.getElementById("tip").innerHTML = total.toFixed(2); // Two-digit decimal number
 }
