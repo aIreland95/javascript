@@ -11,7 +11,7 @@ function calculateTip() {
   let peopleAmt = document.getElementById("peopleamt").value;
 
 // Check for zero or null values
-if (peopleAmt <= 0) {
+if (peopleAmt <= 0 || isNaN(peopleAmt)) {
   alert("You must enter a number of people greater than zero.");
   return;
 }
