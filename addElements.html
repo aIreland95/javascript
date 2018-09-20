@@ -20,15 +20,26 @@
   <script>
 
   function addLi() {
+    // get the user's input from the textbox
+    let name =document.getElementById("nameTextBox").value;
+
+    // clears the textbox after submission
+    document.getElementById("nameTextBox").value = "";
+
+    // create a variable to represent the ul list
     let ul = document.getElementById("list");
+
     let li = document.createElement("li");
     let numChildren = ul.children.length + 1;
 
-
+    // adds id="element4" to <li>
     li.setAttribute("id", "element"+numChildren);
-    li.appendChild(document.createTextNode(nameTextBox.value));
+    // li.appendChild(document.createTextNode(nameTextBox.value));
+
+    li.className = "fakeClass"; // adds class="fakeClass" to the added li
+
+    li.innerHTML = name;
     ul.appendChild(li);
-    nameTextBox.value="";
   }
 
   </script>
