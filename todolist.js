@@ -5,17 +5,30 @@ let buttons = document.getElementsByTagName("button");
 let addButton = buttons[0];
 
 // on click event for the add button
-addButton.onclick(addToDoItem());
+addButton.onclick = function () { addToDoItem() };
 
 // function for adding to do items
 function addToDoItem() {
+
+
   // grab the <ul>
   let ul = document.getElementById("incomplete-tasks");
 
+
   // create the child object
-  let item = document.getElementById("new-task").value;
+  let li = document.createElement("li");
+
+// create the chid label object
+
+  let incompleteLabel = document.createElement("label");
+
+  let task = document.getElementById("new-task").value;
+
+  incompleteLabel.innerHTML = task;
+
+  // append the child <label> to the <li>
+  li.appendChild(incompleteLabel);
 
   // append the child <li> to the <ul>
-  ul.appendChild(item);
-  
+  ul.appendChild(li);
 }
