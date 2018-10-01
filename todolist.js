@@ -11,7 +11,7 @@ addButton.onclick = function () { addToDoItem() };
 function addToDoItem() {
 //Grab the <ul>
 let incompleteUl = document.getElementById("incomplete-tasks");
-let completeUl = document.getElementById("complete-tasks");
+let completeUl = document.getElementById("completed-tasks");
 //Create the child <li> object
 let incompleteLi = document.createElement("li");
 
@@ -27,6 +27,7 @@ let incompleteLabel = document.createElement("label");
 
 //Grab the Add textbox value and set it as text of <label>
 let addText = document.getElementById("new-task").value;
+document.getElementById("new-task").value = "";
 incompleteLabel.innerHTML = addText;
 
 //Create the child <input> for the textbox and set attribute
@@ -66,12 +67,12 @@ incompleteUl.appendChild(incompleteLi);
 
 //Create the delete li function
 function deleteLi(item) {
-//Grab parent <ul>
-let incompleteUl = document.getElementById("incomplete-tasks");
-//Figure out which child <li> it is
-let incompleteChild = item.parentNode;
+//Grab parent <li>
+let li = item.parentNode;
+// grab parent <ul>
+let ul = li.parentNode;
 //Remove the child from parent
-incompleteUl.removeChild(incompleteChild);
+ul.removeChild(li);
 }
 
 function editLi(item) {
@@ -85,7 +86,10 @@ let labelText = li.childNodes[1].innerHTML;
 let textBox = li.childNodes[2];
 //textBox.value = labelText;
 textBox.setAttribute("value", labelText);
-
+// change the edit button's text to 'save'
+item.innerHTML = "Save";
+// change onclick event for save button
+item.onclick = function () { saveLi() };
 }
 
 function completeLi(item) {
@@ -94,5 +98,22 @@ function completeLi(item) {
 // grab the <li> of the checkbox item
   let completeTask = item.parentNode;
 // append child to the new <ul>
-  completeUl.appendChild(completeTask);
+  completeUl.appendChild(completeTask)
+// set onclick event to addToIncomplete
+item.onclick = function () { addToIncomplete(this) };
+}
+
+function addToIncomplete(item) {
+// grab parent <ul>
+  let ul = document.getElementById("incomplete-tasks");
+// grab the <li> of the checkbox item
+  let task = item.parentNode;
+// append child to the new <ul>
+  ul.appendChild(task);
+// set onclick event to completeLi
+  item.onclick = function () { completeLi(this) };
+}
+
+function saveLI() {
+
 }
