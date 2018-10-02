@@ -47,7 +47,6 @@ incompleteButtonDelete.setAttribute("class","delete"); //Creates class="edit"
 incompleteButtonDelete.setAttribute("onclick","deleteLi(this)");
 incompleteButtonDelete.innerHTML = "Delete"; //Creates the Edit text for the button
 
-
 //Append the child <input> checkbox to <li>
 incompleteLi.appendChild(incompleteInputCheckbox);
 
@@ -89,7 +88,7 @@ textBox.setAttribute("value", labelText);
 // change the edit button's text to 'save'
 item.innerHTML = "Save";
 // change onclick event for save button
-item.onclick = function () { saveLi() };
+item.onclick = function () { saveLi(this) };
 }
 
 function completeLi(item) {
@@ -100,7 +99,7 @@ function completeLi(item) {
 // append child to the new <ul>
   completeUl.appendChild(completeTask)
 // set onclick event to addToIncomplete
-item.onclick = function () { addToIncomplete(this) };
+  item.onclick = function () { addToIncomplete(this) };
 }
 
 function addToIncomplete(item) {
@@ -114,6 +113,16 @@ function addToIncomplete(item) {
   item.onclick = function () { completeLi(this) };
 }
 
-function saveLI() {
-
+function saveLi(item) {
+  // remove editmode class from the li
+  let li = item.parentNode;
+  li.classList.remove("editMode");
+  // labels innerHTML needs to be changed to value of textBox
+  let textBox = li.childNodes[1];
+  let labelText = li.childNodes[2].innerHTML;
+  labelText = textBox.value;
+  // remove value of textBox
+  textBox.setAttribute("value", "");
+  // edit button innerHTML needs to say "edit" again
+  item.innerHTML = "Edit";
 }
