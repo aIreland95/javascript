@@ -118,11 +118,13 @@ function saveLi(item) {
   let li = item.parentNode;
   li.classList.remove("editMode");
   // labels innerHTML needs to be changed to value of textBox
-  let textBox = li.childNodes[1];
-  let labelText = li.childNodes[2].innerHTML;
-  labelText = textBox.value;
+  // let labelText = li.childNodes[1].innerHTML;
+  let textBox = li.childNodes[2].value;
   // remove value of textBox
-  textBox.setAttribute("value", "");
+  li.childNodes[1].innerHTML = textBox;
+  textBox.value = '';
   // edit button innerHTML needs to say "edit" again
   item.innerHTML = "Edit";
+  // change onclick event to bring back edit button
+  item.onclick = function () { editLi(this) };
 }
