@@ -5,13 +5,27 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
   </head>
-  <body>
+  <body ng-app="" style="background-color:{{myColor}}" ng-init="person={firstName:'Aaron', lastName:'Ireland', age:23}">
 
-    <div class="" ng-app="">
+    <div class="">
       <form class="" action="" method="post">
         <input style="background-color:{{myColor}}" type="text" ng-model="myColor">
       </form>
     </div>
+<p>My name is {{person.firstName + " " + person.lastName}}</p>
+<p>I'm {{person.age}} years old.
 
   </body>
 </html>
+
+<!-- notes below
+
+ng-init is used to initialize variables
+strings can be used as a variable, keep an eye on quotation on specific strings
+object initilization: ng-init="person={firstName:'John', lastName:'Doe'}"
+calling the previously created object: person.firstName, person.lastName
+arrays: initialize, then call a value using its index
+module: create a module using angular.module("myApp", []) - this will be contained in script tags;
+controller: use ng-controller and call it with app.controller("myCtrl", function($scope){}) within script tags
+
+ -->
