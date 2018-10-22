@@ -5,17 +5,13 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
   </head>
-  <body ng-app="" style="background-color:{{myColor}}" ng-init="person={firstName:'Aaron', lastName:'Ireland', age:23}">
-
-    <div class="">
-      <form class="" action="" method="post">
-        <input style="background-color:{{myColor}}" type="text" ng-model="myColor">
-      </form>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
     </div>
-<p>My name is {{person.firstName + " " + person.lastName}}</p>
-<p>I'm {{person.age}} years old.
-
   </body>
+  <script>
+
+  </script>
 </html>
 
 <!-- notes below
@@ -27,5 +23,8 @@ calling the previously created object: person.firstName, person.lastName
 arrays: initialize, then call a value using its index
 module: create a module using angular.module("myApp", []) - this will be contained in script tags;
 controller: use ng-controller and call it with app.controller("myCtrl", function($scope){}) within script tags
+directives: used for adding functionality,
+modules and controllers are typically contained inside of a js file, add an src to script tags
+Angular functions will remain local, reducing global issues
 
  -->
