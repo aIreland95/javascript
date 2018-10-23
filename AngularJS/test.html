@@ -7,11 +7,11 @@
   </head>
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
+      {{ firstName + " " + lastName }}
     </div>
   </body>
-  <script>
-
-  </script>
+  <script src="myApp.js"></script>
+  <script src="myCtrl.js"></script>
 </html>
 
 <!-- notes below
@@ -26,5 +26,6 @@ controller: use ng-controller and call it with app.controller("myCtrl", function
 directives: used for adding functionality,
 modules and controllers are typically contained inside of a js file, add an src to script tags
 Angular functions will remain local, reducing global issues
+ng-repeat - repeats an HTML element
 
  -->
