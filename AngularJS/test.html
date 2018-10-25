@@ -7,7 +7,7 @@
   </head>
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
-      {{ firstName + " " + lastName }}
+      My name is {{ (firstName | uppercase) + " " + (lastName | lowercase) }}
     </div>
   </body>
   <script src="myApp.js"></script>
@@ -32,6 +32,8 @@ css works with angular - for example, input.ng-invalid { background-color: light
 ng-model adds or removes classes according to a form field's status
 data-vinding, the synchronization between the model and view.
 angular controllers control theta of applications
-
+scope is the binding tool between HTML and JavaScript
+filters are used to format data in angular
+filters can also be added to directives
 
  -->
