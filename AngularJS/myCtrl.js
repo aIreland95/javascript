@@ -4,6 +4,6 @@ app.controller("myCtrl", function($scope, $http) {
 
   $http.get("json_sample.html").then(function (response) {
 
-    $scope.myData = response.data;
+    $scope.myData = response.data.records;
   });
 });
