@@ -21,31 +21,3 @@
   <script src="myApp.js"></script>
   <script src="myCtrl.js"></script>
 </html>
-
-<!-- notes below
-
-ng-init is used to initialize variables
-strings can be used as a variable, keep an eye on quotation on specific strings
-object initilization: ng-init="person={firstName:'John', lastName:'Doe'}"
-calling the previously created object: person.firstName, person.lastName
-arrays: initialize, then call a value using its index
-module: create a module using angular.module("myApp", []) - this will be contained in script tags;
-controller: use ng-controller and call it with app.controller("myCtrl", function($scope){}) within script tags
-directives: used for adding functionality,
-modules and controllers are typically contained inside of a js file, add an src to script tags
-Angular functions will remain local, reducing global issues
-ng-repeat - repeats an HTML element, similar to a for loop
-restrict used to invoke directives by a specified method, like by element or attribute
-css works with angular - for example, input.ng-invalid { background-color: lightblue; }
-ng-model adds or removes classes according to a form field's status
-data-vinding, the synchronization between the model and view.
-angular controllers control theta of applications
-scope is the binding tool between HTML and JavaScript
-filters are used to format data in angular
-filters can also be added to directives
-$http - AngularJS service that reads data from remote servers
-methods include - .delete() .get() .head() .jsonp() .patch() .post() .put()
-properties - .config .data .headers .status .statusText
-JSON - used to provide resting data for an AngularJS app
-
- -->
