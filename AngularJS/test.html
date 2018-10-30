@@ -8,6 +8,14 @@
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
       My name is {{ (firstName | uppercase) + " " + (lastName | lowercase) }}
+      <br />
+
+      <ul>
+        <li ng-repeat="x in myData">
+          {{ x.name }}
+        </li>
+      </ul>
+
     </div>
   </body>
   <script src="myApp.js"></script>
@@ -38,6 +46,6 @@ filters can also be added to directives
 $http - AngularJS service that reads data from remote servers
 methods include - .delete() .get() .head() .jsonp() .patch() .post() .put()
 properties - .config .data .headers .status .statusText
-JSON - used to provide resting data for an AngularJS app 
+JSON - used to provide resting data for an AngularJS app
 
  -->
