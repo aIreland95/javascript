@@ -17,16 +17,20 @@
       </ul> -->
 
       <table>
-        <tr>
-          <th>Name</th>
-          <th>City</th>
-          <th>Country</th>
-        </tr>
-        <tr ng-repeat="x in myData">
-          <td>{{ x.Name }}</td>
-          <td>{{ x.City }}</td>
-          <td>{{ x.Country }}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="x in myData">
+            <td>{{ x.Name }}</td>
+            <td>{{ x.City }}</td>
+            <td>{{ x.Country }}</td>
+          </tr>
+        </tbody>
       </table>
 
     </div>
