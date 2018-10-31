@@ -4,6 +4,21 @@
     <meta charset="utf-8">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+
+    <style>
+      table, th , td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table tr:nth-child(odd) {
+        background-color: #00ff00;
+      }
+      table tr:nth-child(even) {
+        background-color: #ff00ff;
+      }
+  </style>
+
   </head>
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
@@ -16,7 +31,7 @@
         </li>
       </ul> -->
 
-      <table border="3px" width="100%">
+      <table>
         <thead>
           <tr>
             <th>Name</th>
