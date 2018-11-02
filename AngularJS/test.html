@@ -5,20 +5,6 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 
-    <style>
-      table, th , td {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        padding: 5px;
-      }
-      table tr:nth-child(odd) {
-        background-color: #00ff00;
-      }
-      table tr:nth-child(even) {
-        background-color: #ffff00;
-      }
-  </style>
-
   </head>
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
@@ -34,16 +20,16 @@
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>City</th>
-            <th>Country</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="x in myData | orderBy: 'City'">
-            <td>{{ x.Name }}</td>
+          <tr ng-repeat="x in myData">
+            <td>{{ x.First Name }}</td>
+            <td>{{ x.Last Name }}</td>
             <td>{{ x.City }}</td>
-            <td>{{ x.Country }}</td>
           </tr>
         </tbody>
       </table>
