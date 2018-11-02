@@ -11,8 +11,8 @@ $output = "";
 while($row = $result->fetch_array(MYSQLI_ASSOC)) {
   if ($output != "") {$output .= ",";}
   $output .= '{"First Name":"'  . $row["first_name"] . '",';
-    $outp .= '"Last Name":"'   . $rs["last_name"]        . '",';
-    $outp .= '"City":"'. $rs["city"]     . '"}';
+  $output .= '"Last Name":"'   . $row["last_name"]        . '",';
+  $output .= '"City":"'. $row["city"]     . '"}';
 }
 $output = '{"Angular People":[' .$output.']}';
 $conn->close();
