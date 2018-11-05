@@ -23,20 +23,20 @@
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
       <table>
-        <thead>
+        <!-- <thead>
           <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>City</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody> -->
           <tr ng-repeat="x in myPHPData">
             <td>{{ x.first_name }}</td>
             <td>{{ x.last_name }}</td>
             <td>{{ x.city }}</td>
           </tr>
-        </tbody>
+      <!--  </tbody> -->
       </table>
     </div>
   </body>
