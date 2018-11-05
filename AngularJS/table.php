@@ -4,7 +4,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $conn = new msqli("localhost", "aaron", "southhills#", "aaron");
 
-$result = $conn->query("SELECT * FROM angular_people");
+$result = $conn->query("SELECT * FROM aaron.angular_people");
 
 $output = "";
 
