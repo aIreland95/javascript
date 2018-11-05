@@ -21,32 +21,6 @@
 
   </head>
   <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
-      My name is {{ (firstName + " " + lastName) | uppercase }}
-      <br />
-      <ul>
-        <li ng-repeat="x in myData">
-          {{x.Name}} - {{x.City}}, {{x.Country}}
-        </li>
-      </ul>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>City</th>
-            <th>Country</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="x in myData | orderBy: 'City'">
-            <td>{{ x.Name }}</td>
-            <td>{{ x.City }}</td>
-            <td>{{ x.Country }}</td>
-          </tr>
-        </tbody>
-      </table>
-<br /><br />
 
       <table>
         <thead>
