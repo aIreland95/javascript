@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$conn = new msqli("23.30.218.171", "aaron", "southhills#", "angular_people");
+$conn = new msqli("localhost", "aaron", "southhills#", "aaron");
 
 $result = $conn->query("SELECT * FROM angular_people");
 
