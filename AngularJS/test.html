@@ -10,15 +10,17 @@
     <div ng-app="myApp" ng-controller="myCtrl">
 
       <table>
+        <thread>
           <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>City</th>
           </tr>
+        </thread>
         <tbody>
-          <tr ng-repeat="x in myData">
-            <td>{{ x.first_name }}</td>
-            <td>{{ x.last_name }}</td>
+          <tr ng-repeat="x in myPHPData | orderBy: city">
+            <td>{{ x.firstName }}</td>
+            <td>{{ x.lastName }}</td>
             <td>{{ x.city }}</td>
           </tr>
         </tbody>
