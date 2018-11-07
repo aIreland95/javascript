@@ -38,6 +38,14 @@
           </tr>
       </tbody>
       </table>
+
+      <p>Select a name:</p>
+
+      <select ng-model="selectedName" ng-options="y.first_name for (x, y) in myPHPData"</select>
+        <h1>You selected: {{selected.Name.first_name}}</h1>
+        <h2>Last Name: {{selectedName.last_name}}</h2>
+        <h3>City: {{selectedName.city}}</h3>
+
     </div>
   </body>
   <script src="myApp.js"></script>
