@@ -1,4 +1,14 @@
 let app = angular.module("todoApp", []);
-app.controller("todoCtrl", function($scope) {
-    $scope.products = ["This", "Is", "Temporary"];
+
+app.controller("todoCtrl", '$scope','$http', function($scope) {
+
+  getList();
+
+  function getList() {
+
+    $http.post('todoRead.php').success(function(data){
+
+      $scope.details = data;
+    })
+  }
 });
