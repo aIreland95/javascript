@@ -1,27 +1,18 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+// connection to the database
 
-$conn = new mysqli("localhost", "aaron", "southhills#", "aaron");
-$data = json_decode(file_get_contents("php://input"));
+  $conn = new mysqli('localhost', 'aaron', 'southhills#', 'aaron');
 
-if (count($data) > 0) {
+  if ($conn->connect_error) {
 
-  $item = mysqli_real_escape_string($conn, $data->Todo_item);
-  $sql = "INSERT INTO Todo_list(Todo_item) VALUES ('$item')";
-
-  if (mysqli_query($conn, $sql)) {
-
-    echo "Item inserted";
+    die("Connection failed: " . $conn->connect_error);
   }
-  else {
-    echo "Error";
-  }
-}
 
+  $_POST = json_decode(file_get_contents('php://input'), true);
+  $newTask = $_POST['task'];
 
-
-
-
-$conn->close();
+  //Create Query to Select All user data from fm_users Table
+  $sql = "INSERT INTO todo (task) VALUES ('$newTask')";
+  //Execute the SQL and Return Array of Values to $result
+  $result = $conn->query($sql);
 ?>
