@@ -3,18 +3,25 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 $conn = new mysqli("localhost", "aaron", "southhills#", "aaron");
+$data = json_decode(file_get_contents("php://input"));
 
-$result = $conn->query("SELECT first_name, last_name, city FROM Todo_list");
-$outp = "";
+if (count($data) > 0) {
 
-while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
-    if ($outp != "") {$outp .= ",";}
-    $outp .= '{"first_name":"'  . $rs["first_name"] . '",';
-    $outp .= '"last_name":"'   . $rs["last_name"]        . '",';
-    $outp .= '"city":"'. $rs["city"]     . '"}';
+  $item = mysqli_real_escape_string($conn, $data->Todo_item);
+  $sql = "INSERT INTO Todo_list(Todo_item) VALUES ('$item')";
+
+  if (mysqli_query($conn, $sql)) {
+
+    echo "Item inserted";
+  }
+  else {
+    echo "Error";
+  }
 }
-$outp ='{"records":['.$outp.']}';
+
+
+
+
 
 $conn->close();
-echo($outp);
 ?>

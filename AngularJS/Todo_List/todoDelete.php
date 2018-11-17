@@ -4,17 +4,8 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $conn = new mysqli("localhost", "aaron", "southhills#", "aaron");
 
-$result = $conn->query("SELECT first_name, last_name, city FROM Todo_list");
-$outp = "";
+$result = $conn->query("DELETE FROM Todo_list WHERE ");
 
-while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
-    if ($outp != "") {$outp .= ",";}
-    $outp .= '{"first_name":"'  . $rs["first_name"] . '",';
-    $outp .= '"last_name":"'   . $rs["last_name"]        . '",';
-    $outp .= '"city":"'. $rs["city"]     . '"}';
-}
-$outp ='{"records":['.$outp.']}';
-
+while($rs = $result->fetch_array(MYSQLI_ASSOC)) {}
 $conn->close();
-echo($outp);
 ?>

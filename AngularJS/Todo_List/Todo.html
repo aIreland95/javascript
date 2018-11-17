@@ -55,7 +55,6 @@ cards.html - Bootstrap Cards -->
     </nav>
 
     <main role="main" class="container">
-
       <div class="starter-template">
         <h1>AngularJS To Do List using Bootstrap and PHP</h1>
       </div>
@@ -70,9 +69,9 @@ cards.html - Bootstrap Cards -->
 
                   <div class="container" ng-app="todoApp" ng-controller="todoCtrl">
                     <p>
-                      <label for="new-task">Add Item</label>
-                      <input id="new-task" type="text">
-                      <button>Add</button>
+                      <label for="Todo_item">Add Item</label>
+                      <input id="Todo_item" type="text" ng-model="Todo_item">
+                      <button ng-click="insertTodo()">Add</button>
                     </p>
 
                     <h3>Todo</h3>
@@ -86,9 +85,8 @@ cards.html - Bootstrap Cards -->
 
                 </div>
               </div>
-      </div>
-
-    </main><!-- /.container -->
+            </div>
+        </main><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
