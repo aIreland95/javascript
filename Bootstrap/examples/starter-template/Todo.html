@@ -101,7 +101,7 @@ cards.html - Bootstrap Cards -->
                 <input type="text"><button class="edit">Edit</button>
                 <button class="delete">Delete</button>
               </li>
-              
+
             </ul>
 
 
@@ -123,11 +123,12 @@ cards.html - Bootstrap Cards -->
     <script src="../../dist/js/bootstrap.min.js"></script>
 
     <script>
-      var app = angular.module('myApp', []);
-      app.controller('sqlController', function($scope, $http) {
+      let app = angular.module('todoApp', []);
+      app.controller('todoCtrl', function($scope, $http) {
       $http.get("todolistRetrieve.php").then(function (response) {$scope.names = response.data.records;});
-      $scope.createTask = function (newTask) {
-        $http.post("todolistCreate.php", {task:newTask});
+
+      $scope.createTodo = function (newTask) {
+        $http.post("todoCreate.php", {task:newTask});
       }
       });
     </script>
