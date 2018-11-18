@@ -1,14 +1,12 @@
-let app = angular.module("todoApp", []);
+let app = angular.module('todoApp', []);
 
-app.controller("todoCtrl", function($scope, $http) {
+app.controller('todoCtrl', function($scope, $http) {
 
-    $scope.insertTodo = function() {
+$http.get("todolistRetrieve.php").then(function (response) {$scope.names = response.data.records;});
 
-      $http.post(
-        "todoCreate.php",
-        {'Todo_item':$scope.Todo_item}
-      ).success(function(data) {
-          alert(data);
-      });
-    }
+$scope.createTodo = function (newTask) {
+
+  $http.post("todoCreate.php", {task:newTask});
+}
+
 });

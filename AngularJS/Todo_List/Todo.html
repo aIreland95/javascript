@@ -10,10 +10,11 @@ cards.html - Bootstrap Cards -->
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>New To Do List</title>
+    <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
@@ -55,38 +56,63 @@ cards.html - Bootstrap Cards -->
     </nav>
 
     <main role="main" class="container">
-      <div class="starter-template">
-        <h1>AngularJS To Do List using Bootstrap and PHP</h1>
+
+      <div class="row">
+
+        <div class="card col-sm-8 col-md-8">
+          <div class="card-header">
+            ToDo List
+          </div>
+          <div class="card-body" ng-app="todoApp" ng-controller="todoCtrl">
+
+            <p>
+              <label for="new-task">Add Item</label>
+              <input id="new-task" type="text" ng-model="newTask">
+              <button ng-click="createTodo(newTask)">Add</button>
+            </p>
+
+            <h3>Todo</h3>
+            <ul id="incomplete-tasks">
+
+              <li>
+                <input type="checkbox">
+                <label>Pay Bills</label>
+                <input type="text">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </li>
+
+              <li class="editMode">
+                <input type="checkbox">
+                <label>Go Shopping</label>
+                <input type="text" value="Go Shopping">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </li>
+
+            </ul>
+
+            <h3>Completed</h3>
+            <ul id="completed-tasks">
+
+              <li>
+                <input type="checkbox" checked>
+                <label>See the Doctor</label>
+                <input type="text"><button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </li>
+              
+            </ul>
+
+
+            Some Text <br />
+            <a href="google.com" class="btn btn-warning">GOOGLE IT</a>
+          </div>
+        </div>
+
       </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <!-- basic card with no header, footer, or image -->
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title">To Do List</h5>
-
-                  <div class="container" ng-app="todoApp" ng-controller="todoCtrl">
-                    <p>
-                      <label for="Todo_item">Add Item</label>
-                      <input id="Todo_item" type="text" ng-model="Todo_item">
-                      <button ng-click="insertTodo()">Add</button>
-                    </p>
-
-                    <h3>Todo</h3>
-                    <ul id="incomplete-tasks">
-                    </ul>
-
-                    <h3>Completed</h3>
-                    <ul id="completed-tasks">
-                    </ul>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-        </main><!-- /.container -->
+    </main><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -95,5 +121,16 @@ cards.html - Bootstrap Cards -->
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
+
+    <script>
+      var app = angular.module('myApp', []);
+      app.controller('sqlController', function($scope, $http) {
+      $http.get("todolistRetrieve.php").then(function (response) {$scope.names = response.data.records;});
+      $scope.createTask = function (newTask) {
+        $http.post("todolistCreate.php", {task:newTask});
+      }
+      });
+    </script>
+
   </body>
 </html>

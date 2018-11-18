@@ -1,11 +1,19 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+// connection to the database
 
-$conn = new mysqli("localhost", "aaron", "southhills#", "aaron");
+  $conn = new mysqli('localhost', 'aaron', 'southhills#', 'aaron');
 
-$result = $conn->query("DELETE FROM Todo_list WHERE ");
+  if ($conn->connect_error) {
 
-while($rs = $result->fetch_array(MYSQLI_ASSOC)) {}
-$conn->close();
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  $_POST = json_decode(file_get_contents('php://input'), true);
+  $delTask = $_POST['task'];
+  $del_id = $_POST['task_id'];
+
+  //Create Query to Select All user data from fm_users Table
+  $sql = "DELETE FROM todo WHERE task_id = ('$del_id')";
+  //Execute the SQL and Return Array of Values to $result
+  $result = $conn->query($sql);
 ?>
