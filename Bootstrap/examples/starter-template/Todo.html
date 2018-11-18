@@ -78,16 +78,16 @@ cards.html - Bootstrap Cards -->
                 <input type="checkbox">
                 <label>Pay Bills</label>
                 <input type="text">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
+                <button class="edit" ng-click="updateTodo()">Edit</button>
+                <button class="delete" ng-click="deleteTodo()">Delete</button>
               </li>
 
               <li class="editMode">
                 <input type="checkbox">
                 <label>Go Shopping</label>
                 <input type="text" value="Go Shopping">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
+                <button class="edit" ng-click="updateTodo()">Edit</button>
+                <button class="delete" ng-click="deleteTodo()">Delete</button>
               </li>
 
             </ul>
@@ -98,15 +98,11 @@ cards.html - Bootstrap Cards -->
               <li>
                 <input type="checkbox" checked>
                 <label>See the Doctor</label>
-                <input type="text"><button class="edit">Edit</button>
-                <button class="delete">Delete</button>
+                <input type="text"><button class="edit" ng-click="updateTodo()">Edit</button>
+                <button class="delete" ng-click="deleteTodo()">Delete</button>
               </li>
 
             </ul>
-
-
-            Some Text <br />
-            <a href="google.com" class="btn btn-warning">GOOGLE IT</a>
           </div>
         </div>
 
@@ -125,11 +121,25 @@ cards.html - Bootstrap Cards -->
     <script>
       let app = angular.module('todoApp', []);
       app.controller('todoCtrl', function($scope, $http) {
-      $http.get("todolistRetrieve.php").then(function (response) {$scope.names = response.data.records;});
+
+      $http.get("todolistRead.php").then(function (response) {$scope.names = response.data.records;});
 
       $scope.createTodo = function (newTask) {
         $http.post("todoCreate.php", {task:newTask});
       }
+
+      $scope.readTodo = function () {
+        $http.post("todoRead.php");
+      }
+
+      $scope.updateTodo = function() {
+        $http.post("todoUpdate.php");
+      }
+
+      $scope.deleteTodo = function () {
+        $http.post("todoDelete.php");
+      }
+
       });
     </script>
 
