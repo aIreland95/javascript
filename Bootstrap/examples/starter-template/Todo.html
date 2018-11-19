@@ -103,7 +103,18 @@ cards.html - Bootstrap Cards -->
         $scope.tasks = ["Pay Taxes", "Fix Brake Pads", "World Domination"];
 
         $scope.addTask = function () {
-          $scope.tasks.push($scope.addTask);
+          $scope.message = "";
+          if (!$scope.addTask) {return;}
+          if ($scope.tasks.indexOf($scope.addTask) == -1) {
+            $scope.tasks.push($scope.addTask);
+          } else {
+            $scope.message = "This item is already in your todo list.";
+          }
+        }
+
+        $scope.deleteTask = function (x) {
+          $scope.message = "";
+          $scope.tasks.splice(x, 1);
         }
       //$http.get("todoRead.php").then(function (response) {$scope.tasks = response.data.records;});
 
