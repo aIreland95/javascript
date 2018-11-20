@@ -105,8 +105,8 @@ cards.html - Bootstrap Cards -->
         $scope.members = response.data;
       });
 
-      $scope.createTask = function() {
-        $http.post("todoCreate.php", {task_id: $scope.task_id, task: $scope.task, complete: $scope.complete})
+      $scope.createTask = function(addTask) {
+        $http.post("todoCreate.php", {task: addTask})
         .then(function() {
           $scope.task = "";
           $scope.selectTasks();

@@ -8,8 +8,8 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $newTask = json_decode(file_get_contents('php://input'));
-  $task = $newTask->task;
+  $_POST = json_decode(file_get_contents('php://input'),true);
+  $task = $_POST['addTask'];
 
   //Create Query to Select All user data from fm_users Table
   $conn->query("INSERT INTO todo (task) VALUES ('$task')");
