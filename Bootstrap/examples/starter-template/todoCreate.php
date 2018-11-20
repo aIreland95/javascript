@@ -12,5 +12,5 @@
   $task = $newTask->task;
 
   //Create Query to Select All user data from fm_users Table
-  $conn->query("INSERT INTO todo (task, complete) VALUES ('$task', 0)");
+  $conn->query("INSERT INTO todo (task) VALUES ('$task')");
 ?>
