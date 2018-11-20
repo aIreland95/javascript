@@ -74,7 +74,7 @@ cards.html - Bootstrap Cards -->
             <h3>Todo</h3>
             <ul id="incomplete-tasks">
 
-              <li ng-repeat="x in tasks">{{ x }}</li>
+              <li ng-repeat="task in tasksData">{{ task.task }}</li>
 
             </ul>
 
@@ -99,14 +99,17 @@ cards.html - Bootstrap Cards -->
 
     <script>
       let app = angular.module('todoApp', []);
-      app.controller('todoCtrl',['$scope','$http', function ($scope, $http) {
+      app.controller('todoCtrl', function ($scope, $http) {
 
-      $http.get("todoRead.php").then(function (response) {$scope.tasks = response.data.records;});
+      $http.get("todoRead.php").success(function(data) {
+        $scope.tasksData = data;
+      });
+    };
 
       $scope.addTask = function (newTask) {
         $http.post("todoCreate.php", {task:newTask});
       }
-      
+
       // $scope.updateTodo = function() {
       //   $http.post("todoUpdate.php");
       // }

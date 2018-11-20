@@ -3,15 +3,22 @@
 
   $conn = new mysqli('localhost', 'aaron', 'southhills#', 'aaron');
 
-  if ($conn->connect_error) {
+  //Select Query to Select All user data from todo Table
+  $sql = "SELECT task_id, task, complete FROM todo";
 
+  //Execute the SQL and Return $result
+  $result = $conn->query($sql);
+
+  if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $_POST = json_decode(file_get_contents('php://input'), true);
+  if ($result->execute()) {
 
-  //Create Query to Select All user data from fm_users Table
-  $sql = "SELECT task_id, task, complete FROM todo";
-  //Execute the SQL and Return Array of Values to $result
-  $result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+      $data[] = $row;
+    }
+  }
+
+  //$_POST = json_decode(file_get_contents('php://input'), true);
 ?>
