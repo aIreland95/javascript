@@ -20,7 +20,7 @@ cards.html - Bootstrap Cards -->
     <link href="starter-template.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body ng-app="todoApp" ng-controller="todoCtrl">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -63,7 +63,7 @@ cards.html - Bootstrap Cards -->
           <div class="card-header">
             ToDo List
           </div>
-          <div class="card-body" ng-app="todoApp" ng-controller="todoCtrl">
+          <div class="card-body" >
 {{ test }}
             <p>
               <label for="new-task">Add Item</label>
@@ -101,6 +101,7 @@ cards.html - Bootstrap Cards -->
       let app = angular.module('todoApp', []);
       app.controller('todoCtrl', function ($scope, $http) {
 $scope.test = "hello";
+
       $http.get("todoRead.php").then(function (response) {
         $scope.members = response.data;
       });
@@ -118,8 +119,9 @@ $scope.test = "hello";
           $scope.members = response.data;
         });
       }
+
     };
-  });
+  );
     </script>
 
   </body>
