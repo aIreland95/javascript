@@ -72,7 +72,7 @@ cards.html - Bootstrap Cards -->
             </p>
 
             <h3>Todo</h3>
-            <ul id="incomplete-tasks" ng-repeat="x in members">
+            <ul id="incomplete-tasks" ng-repeat="x in incomplete">
 
               <li>{{ x.task }}   <button ng-click="updateTask($index, x.task)">Edit</button>  <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
@@ -102,7 +102,11 @@ cards.html - Bootstrap Cards -->
       app.controller('myCtrl', function($scope, $http) {
 
       $http.get("todoRead.php").then(function(response) {
-        $scope.members = response.data;
+        $scope.incomplete = response.data;
+      });
+
+      $http.get("todoComplete.php").then(function(response) {
+        $scope.complete = response.data;
       });
 
       $scope.createTask = function(addTask) {
@@ -110,24 +114,33 @@ cards.html - Bootstrap Cards -->
         .then(function() {
           $scope.task = "";
           $scope.selectTasks();
+          $scope.selectComplete();
         });
       }
 
       $scope.selectTasks = function() {
         $http.get("todoRead.php").then(function(response) {
-          $scope.members = response.data;
+          $scope.incomplete = response.data;
+        });
+      }
+
+      $scope.selectComplete = function() {
+        $http.get("todoComplete.php").then(function(response) {
+          $scope.complete = response.data;
         });
       }
 
       $scope.deleteTask = function(index, tID) {
         $http.post("todoDelete.php", {task_id: tID}).then(function() {
           $scope.selectTasks();
+          $scope.selectComplete();
         });
       }
 
-      $scope.updateTask = function(index, taskName) {
-        $http.post("todoUpdate.php", {task: taskName}).then(function() {
+      $scope.updateTask = function(index, tID,tName) {
+        $http.post("todoUpdate.php", {task_id: tID, task: tName}).then(function() {
           $scope.selectTasks();
+          $scope.selectComplete();
         })
       }
 
