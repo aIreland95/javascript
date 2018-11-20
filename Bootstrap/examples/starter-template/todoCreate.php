@@ -8,11 +8,9 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $_POST = json_decode(file_get_contents('php://input'), true);
-  $newTask = $_POST['task'];
+  $newTask = json_decode(file_get_contents('php://input'));
+  $task = $newTask->task;
 
   //Create Query to Select All user data from fm_users Table
-  $sql = "INSERT INTO todo (task, complete) VALUES ('$newTask', 0)";
-  //Execute the SQL and Return Array of Values to $result
-  $result = $conn->query($sql);
+  $conn->query("INSERT INTO todo (task, complete) VALUES ('$task', 0)");
 ?>

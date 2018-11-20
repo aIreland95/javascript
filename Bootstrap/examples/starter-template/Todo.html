@@ -68,7 +68,7 @@ cards.html - Bootstrap Cards -->
             <p>
               <label for="new-task">Add Item</label>
               <input id="new-task" type="text" ng-model="addTask">
-              <button ng-click="addTask()">Add</button>
+              <button ng-click="createTask()">Add</button>
             </p>
 
             <h3>Todo</h3>
@@ -101,24 +101,25 @@ cards.html - Bootstrap Cards -->
       let app = angular.module('todoApp', []);
       app.controller('todoCtrl', function ($scope, $http) {
 
-      $http.get("todoRead.php").success(function(data) {
-        $scope.tasksData = data;
+      $http.get("todoRead.php").then(function(response) {
+        $scope.members = response.data;
       });
-    };
 
-      $scope.addTask = function (newTask) {
-        $http.post("todoCreate.php", {task:newTask});
+      $scope.createTask = function() {
+        $http.post("todoCreate.php", {taks_id: $scope.task_id, task: $scope.task, complete: $scope.complete})
+        .then(function() {
+          $scope.task = "";
+          $scope.selectTasks();
+        });
       }
 
-      // $scope.updateTodo = function() {
-      //   $http.post("todoUpdate.php");
-      // }
-      //
-      // $scope.deleteTodo = function () {
-      //   $http.post("todoDelete.php");
-      // }
-
-      });
+      $scope.selectTasks = function() {
+        $http.get('todoRead.php').then(function(response) {
+          $scope.members = response.data;
+        });
+      }
+    };
+  });
     </script>
 
   </body>
