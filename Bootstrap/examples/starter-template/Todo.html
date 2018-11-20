@@ -79,7 +79,9 @@ cards.html - Bootstrap Cards -->
             </ul>
 
             <h3>Completed</h3>
-            <ul id="completed-tasks">
+            <ul id="completed-tasks" ng-repeat="x in complete">
+
+              <li>{{ x.task }}   <button ng-click="updateTask($index, x.task)">Edit</button>  <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
             </ul>
           </div>
