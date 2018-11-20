@@ -72,9 +72,9 @@ cards.html - Bootstrap Cards -->
             </p>
 
             <h3>Todo</h3>
-            <ul id="incomplete-tasks">
+            <ul id="incomplete-tasks" ng-repeat="member in members">
 
-              <li ng-repeat="member in members">{{ member.task }}</li>
+              <li>{{ member.task }}</li>
 
             </ul>
 
