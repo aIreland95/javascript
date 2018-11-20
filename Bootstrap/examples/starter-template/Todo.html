@@ -64,7 +64,7 @@ cards.html - Bootstrap Cards -->
             ToDo List
           </div>
           <div class="card-body" >
-{{ test }}
+
             <p>
               <label for="new-task">Add Item</label>
               <input id="new-task" type="text" ng-model="addTask">
@@ -72,9 +72,9 @@ cards.html - Bootstrap Cards -->
             </p>
 
             <h3>Todo</h3>
-            <ul id="incomplete-tasks" ng-repeat="member in members">
+            <ul id="incomplete-tasks" ng-repeat="x in members">
 
-              <li>{{ member.task }}</li>
+              <li>{{ x.task }}<span ng-click="deleteTask($index, x.task_id)">&times</span></li>
 
             </ul>
 
@@ -100,7 +100,6 @@ cards.html - Bootstrap Cards -->
     <script>
       var app = angular.module('myApp', []);
       app.controller('myCtrl', function($scope, $http) {
-$scope.test = "hello";
 
       $http.get("todoRead.php").then(function(response) {
         $scope.members = response.data;
@@ -115,8 +114,14 @@ $scope.test = "hello";
       }
 
       $scope.selectTasks = function() {
-        $http.get('todoRead.php').then(function(response) {
+        $http.get("todoRead.php").then(function(response) {
           $scope.members = response.data;
+        });
+      }
+
+      $scope.deleteTask = function(index, task_id) {
+        $http.get("todoDelete.php").then(function() {
+          $scope.selectTasks();
         });
       }
 
