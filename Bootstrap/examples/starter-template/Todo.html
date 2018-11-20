@@ -74,7 +74,7 @@ cards.html - Bootstrap Cards -->
             <h3>Todo</h3>
             <ul id="incomplete-tasks" ng-repeat="x in members">
 
-              <li>{{ x.task }}<span ng-click="deleteTask($index, x.task_id)">&times</span></li>
+              <li>{{ x.task }} <button ng-click="updateTask($index, x.task)">Edit</button>  <span ng-click="deleteTask($index, x.task_id)">&times</span></li>
 
             </ul>
 
@@ -123,6 +123,12 @@ cards.html - Bootstrap Cards -->
         $http.post("todoDelete.php", {task_id: tID}).then(function() {
           $scope.selectTasks();
         });
+      }
+
+      $scope.updateTask = function(index, taskName) {
+        $http.post("todoUpdate.php", {task: taskName}).then(function() {
+          $scope.selectTasks();
+        })
       }
 
     });
