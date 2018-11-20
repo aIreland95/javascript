@@ -64,7 +64,7 @@ cards.html - Bootstrap Cards -->
             ToDo List
           </div>
           <div class="card-body" ng-app="todoApp" ng-controller="todoCtrl">
-
+{{ test }}
             <p>
               <label for="new-task">Add Item</label>
               <input id="new-task" type="text" ng-model="addTask">
@@ -100,13 +100,13 @@ cards.html - Bootstrap Cards -->
     <script>
       let app = angular.module('todoApp', []);
       app.controller('todoCtrl', function ($scope, $http) {
-
+$scope.test = "hello";
       $http.get("todoRead.php").then(function (response) {
         $scope.members = response.data;
       });
 
       $scope.createTask = function(addTask) {
-        $http.post("todoCreate.php", {task: addTask})
+        $http.post("todoCreate.php", {task:addTask})
         .then(function() {
           $scope.task = "";
           $scope.selectTasks();
