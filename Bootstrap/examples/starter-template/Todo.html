@@ -20,7 +20,7 @@ cards.html - Bootstrap Cards -->
     <link href="starter-template.css" rel="stylesheet">
   </head>
 
-  <body ng-app="todoApp" ng-controller="todoCtrl">
+  <body ng-app="myApp" ng-controller="myCtrl">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -98,11 +98,11 @@ cards.html - Bootstrap Cards -->
     <script src="../../dist/js/bootstrap.min.js"></script>
 
     <script>
-      let app = angular.module('todoApp', []);
-      app.controller('todoCtrl', function ($scope, $http) {
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {
 $scope.test = "hello";
 
-      $http.get("todoRead.php").then(function (response) {
+      $http.get("todoRead.php").then(function(response) {
         $scope.members = response.data;
       });
 
@@ -120,8 +120,7 @@ $scope.test = "hello";
         });
       }
 
-    };
-  );
+    });
     </script>
 
   </body>
