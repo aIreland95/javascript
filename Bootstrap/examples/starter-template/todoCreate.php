@@ -12,7 +12,7 @@
   $newTask = $_POST['task'];
 
   //Create Query to Select All user data from fm_users Table
-  $sql = "INSERT INTO todo (task) VALUES ('$newTask')";
+  $sql = "INSERT INTO todo (task, complete) VALUES ('$newTask', 0)";
   //Execute the SQL and Return Array of Values to $result
   $result = $conn->query($sql);
 ?>

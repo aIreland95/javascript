@@ -11,7 +11,7 @@
   $_POST = json_decode(file_get_contents('php://input'), true);
 
   //Create Query to Select All user data from fm_users Table
-  $sql = "SELECT * FROM todo";
+  $sql = "SELECT task_id, task, complete FROM todo";
   //Execute the SQL and Return Array of Values to $result
   $result = $conn->query($sql);
 ?>
