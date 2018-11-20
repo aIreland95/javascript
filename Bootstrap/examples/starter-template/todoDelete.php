@@ -9,7 +9,6 @@
   }
 
   $_POST = json_decode(file_get_contents('php://input'), true);
-  $delTask = $_POST['task'];
   $del_id = $_POST['task_id'];
 
   //Create Query to Select All user data from fm_users Table

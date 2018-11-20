@@ -119,8 +119,8 @@ cards.html - Bootstrap Cards -->
         });
       }
 
-      $scope.deleteTask = function(index, task_id) {
-        $http.get("todoDelete.php").then(function() {
+      $scope.deleteTask = function(index, tID) {
+        $http.post("todoDelete.php", {task_id: tID}).then(function() {
           $scope.selectTasks();
         });
       }
