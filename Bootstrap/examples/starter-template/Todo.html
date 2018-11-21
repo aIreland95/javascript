@@ -188,6 +188,13 @@ cards.html - Bootstrap Cards -->
         })
       }
 
+      $scope.moveTask = function(tID) {
+        $http.post("todoMove.php", {task_id: tID}).then(function() {
+          $scope.selectTasks();
+          $scope.selectComplete();
+        })
+      }
+
     });
     </script>
 
