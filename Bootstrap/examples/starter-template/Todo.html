@@ -67,7 +67,7 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
 
             <p>
               <label for="new-task">Add a Task</label>
-              <input id="new-task" type="text" ng-model="addTask">
+              <input id="new-task" type="text" placeholder="What needs done?" ng-model="addTask">
               <button ng-click="createTask(addTask)">Add</button>
             </p>
 
@@ -77,7 +77,7 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
 
               <li ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
 
-                <div id="taskModal{{$index class="modal fade" role="dialog"> <!-- start of modal -->
+                <div id="taskModal{{$index}}" class="modal fade" role="dialog"> <!-- start of modal -->
                   <div class="modal-dialog">
 
                     <div class="modal-content">
@@ -105,7 +105,7 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
 
               <li ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
 
-                <div id="taskModal{{$index class="modal fade" role="dialog"> <!-- start of modal -->
+                <div id="taskModal{{$index}}" class="modal fade" role="dialog"> <!-- start of modal -->
                   <div class="modal-dialog">
 
                     <div class="modal-content">
