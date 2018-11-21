@@ -74,14 +74,35 @@ cards.html - Bootstrap Cards -->
             <h3>Todo</h3>
             <ul id="incomplete-tasks" ng-repeat="x in incomplete">
 
-              <li>{{ x.task }}   <button ng-click="updateTask($index, x.task)">Edit</button>  <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
+              <li>{{ x.task }}   <button data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
+
+                <div id="taskModal{{$index class="modal fade" role="dialog"> <!-- start of modal -->
+                  <div class="modal-dialog">
+
+                    <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                          <div class="modal-body">
+                              <div class="form-group">
+                                <input type="text" class="form-control"  ng-model="x.task">
+                              </div>
+
+                            <button ng-click="updateTask(x.task_id, x.task)">Save Changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- end of modal -->
+
+                <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
             </ul>
 
             <h3>Completed</h3>
             <ul id="completed-tasks" ng-repeat="x in complete">
 
-              <li>{{ x.task }}   <button ng-click="updateTask($index, x.task)">Edit</button>  <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
+              <li>{{ x.task }}   <button data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>  <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
             </ul>
           </div>
@@ -139,7 +160,7 @@ cards.html - Bootstrap Cards -->
         });
       }
 
-      $scope.updateTask = function(index, tID,tName) {
+      $scope.updateTask = function(tID, tName) {
         $http.post("todoUpdate.php", {task_id: tID, task: tName}).then(function() {
           $scope.selectTasks();
           $scope.selectComplete();
