@@ -75,7 +75,7 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
             <p>-- Click on a task to complete it, click edit to change the task, or click delete to remove the task --</p>
             <ul id="incomplete-tasks" ng-repeat="x in incomplete">
 
-              <li ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
+              <li ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="#taskModal{{$index}}">Edit</button>
 
                 <div id="taskModal{{$index}}" class="modal fade" role="dialog"> <!-- start of modal -->
                   <div class="modal-dialog">
@@ -103,7 +103,7 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
             <h3>Completed</h3>
             <ul id="completed-tasks" ng-repeat="x in complete">
 
-              <li ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
+              <li ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="#taskModal{{$index}}">Edit</button>
 
                 <div id="taskModal{{$index}}" class="modal fade" role="dialog"> <!-- start of modal -->
                   <div class="modal-dialog">
