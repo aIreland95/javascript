@@ -75,7 +75,9 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
             <p>-- Click on a task to complete it, click edit to change the task, or click delete to remove the task --</p>
             <ul id="incomplete-tasks" ng-repeat="x in incomplete">
 
-              <li> <label ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
+              <li> <label ng-click="moveTask(x.task_id)">{{ x.task }}
+                <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
+                <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
                 <div id="taskModal{{$index}}" class="modal fade" role="dialog"> <!-- start of modal -->
                   <div class="modal-dialog">
@@ -96,15 +98,16 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
                     </div>
                   </div> <!-- end of modal -->
 
-                <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
             </ul>
 
             <h3>Completed</h3>
             <ul id="completed-tasks" ng-repeat="x in complete">
 
-              <li> <label ng-click="moveTask(x.task_id)">{{ x.task }}   <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
-
+              <li> <label ng-click="moveTask(x.task_id)">{{ x.task }}
+                <button type="button" data-toggle="modal" data-target="taskModal{{$index}}">Edit</button>
+                <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
+                
                 <div id="taskModal{{$index}}" class="modal fade" role="dialog"> <!-- start of modal -->
                   <div class="modal-dialog">
 
@@ -123,8 +126,6 @@ Todo.html - A Todo List using angularjs, mysql, and php -->
                       </div>
                     </div>
                   </div> <!-- end of modal -->
-
-                <button ng-click="deleteTask($index, x.task_id)">Delete</button></li>
 
             </ul>
           </div>
